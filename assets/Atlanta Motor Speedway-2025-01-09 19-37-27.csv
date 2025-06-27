@@ -1,0 +1,4 @@
+Lap,Driver,Track,LapTimeNumeric,LapTimeFormatted,TopSpeed,Session,FuelTank,FuelUsed,TrackTemp,WaterTemp,OilTemp,CreatedAt
+3,Joao Gabriel,Atlanta,-1.0,-1.000,271.44,TESTING,69.14,1.61,26.67,83.33,78.82,2025-01-09 19-27-33
+4,Joao Gabriel,Atlanta,-1.0,-1.000,274.56,TESTING,69.12,0.01,26.67,83.79,79.26,2025-01-09 19-30-55
+5,Joao Gabriel,Atlanta,31.703,31.703,281.14,TESTING,67.89,1.23,26.67,79.45,80.1,2025-01-09 19-31-26
