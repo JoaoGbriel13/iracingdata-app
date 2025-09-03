@@ -13,8 +13,10 @@ class State:
     last_car_setup_tick = -1
 
 
+last_session_id = None
+
 def check_iracing():
-    global idx
+    global idx, last_session_id
     if state.ir_connected and not (ir.is_initialized and ir.is_connected):
         state.ir_connected = False
         state.last_car_setup_tick = -1
@@ -25,8 +27,16 @@ def check_iracing():
     elif not state.ir_connected and ir.startup() and ir.is_initialized and ir.is_connected:
         state.ir_connected = True
         idx = ir['DriverInfo']['DriverCarIdx']
+        last_session_id = ir['SessionInfo']['Sessions'][-1]['SessionUniqueID']
         print(idx)
         print('irsdk connected')
+    elif state.ir_connected:
+        # Verifica se mudou de sessão
+        current_session_id = ir['SessionInfo']['Sessions'][-1]['SessionUniqueID']
+        if current_session_id != last_session_id:
+            last_session_id = current_session_id
+            idx = ir['DriverInfo']['DriverCarIdx']
+            print(f"Session changed, new idx: {idx}")
 
 
 # Flag para evitar múltiplos registros de pit stop
